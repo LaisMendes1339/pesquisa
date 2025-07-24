@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pesquisa de Satisfação Seteg</title>
+  <style>
+    /* Reset básico */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #001f3f;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      padding: 40px 20px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.2rem;
+    }
+
+    p {
+      max-width: 800px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      white-space: pre-line; /* mantém quebras de linha do texto */
+    }
+
+    .question {
+      max-width: 800px;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .question label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .rating {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rating button {
+      flex: 1 1 30px;
+      max-width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .rating button:hover,
+    .rating button:focus {
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+      outline: none;
+    }
+
+    /* Cores dos botões de 0 a 10 */
+    .rating button:nth-child(1)  { background-color: #c62828; }  /* 0 */
+    .rating button:nth-child(2)  { background-color: #d32f2f; }  /* 1 */
+    .rating button:nth-child(3)  { background-color: #e53935; }  /* 2 */
+    .rating button:nth-child(4)  { background-color: #fb8c00; }  /* 3 */
+    .rating button:nth-child(5)  { background-color: #fdd835; color: #000; }  /* 4 */
+    .rating button:nth-child(6)  { background-color: #fbc02d; color: #000; }  /* 5 */
+    .rating button:nth-child(7)  { background-color: #f9a825; }  /* 6 */
+    .rating button:nth-child(8)  { background-color: #c0ca33; color: #000; }  /* 7 */
+    .rating button:nth-child(9)  { background-color: #7cb342; }  /* 8 */
+    .rating button:nth-child(10) { background-color: #43a047; }  /* 9 */
+    .rating button:nth-child(11) { background-color: #2e7d32; }  /* 10 */
+
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea:focus {
+      outline: 2px solid #fbc02d;
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 10px;
+      }
+      .rating button {
+        max-width: 30px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      p, .question label {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Pesquisa de Satisfação Seteg</h1>
+  <p>
+    Olá, <br><br>
+    Nós da Seteg prezamos por um relacionamento cada vez mais próximo e transparente com nossos clientes. Por isso, sua opinião é fundamental para que possamos aprimorar continuamente a qualidade do nosso atendimento e dos serviços que oferecemos.<br><br>
+    Preparamos um breve formulário para que você possa compartilhar sua experiência conosco. Suas respostas serão de grande valor para toda a nossa equipe e nos ajudarão a evoluir ainda mais.<br><br>
+    Agradecemos desde já sua colaboração e sinceridade.
+  </p>
+
+  <div class="question">
+    <label for="q1">1. De 0 a 10 qual nota você atribui ao trabalho da Seteg?</label>
+    <div class="rating" role="radiogroup" aria-labelledby="q1">
+      <button type="button" aria-label="Nota 0">0</button>
+      <button type="button" aria-label="Nota 1">1</button>
+      <button type="button" aria-label="Nota 2">2</button>
+      <button type="button" aria-label="Nota 3">3</button>
+      <button type="button" aria-label="Nota 4">4</button>
+      <button type="button" aria-label="Nota 5">5</button>
+      <button type="button" aria-label="Nota 6">6</button>
+      <button type="button" aria-label="Nota 7">7</button>
+      <button type="button" aria-label="Nota 8">8</button>
+      <button type="button" aria-label="Nota 9">9</button>
+      <button type="button" aria-label="Nota 10">10</button>
+    </div>
+  </div>
+
+  <div class="question">
+    <label for="q2">2. De 0 a 10 o quanto você está satisfeito com o seu relacionamento com nossa equipe?</label>
+    <div class="rating" role="radiogroup" aria-labelledby="q2">
+      <button type="button" aria-label="Nota 0">0</button>
+      <button type="button" aria-label="Nota 1">1</button>
+      <button type="button" aria-label="Nota 2">2</button>
+      <button type="button" aria-label="Nota 3">3</button>
+      <button type="button" aria-label="Nota 4">4</button>
+      <button type="button" aria-label="Nota 5">5</button>
+      <button type="button" aria-label="Nota 6">6</button>
+      <button type="button" aria-label="Nota 7">7</button>
+      <button type="button" aria-label="Nota 8">8</button>
+      <button type="button" aria-label="Nota 9">9</button>
+      <button type="button" aria-label="Nota 10">10</button>
+    </div>
+  </div>
+
+  <div class="question">
+    <label for="q3">3. De 0 a 10 o quão efetiva é a comunicação com os canais de acesso a Seteg?</label>
+    <div class="rating" role="radiogroup" aria-labelledby="q3">
+      <button type="button" aria-label="Nota 0">0</button>
+      <button type="button" aria-label="Nota 1">1</button>
+      <button type="button" aria-label="Nota 2">2</button>
+      <button type="button" aria-label="Nota 3">3</button>
+      <button type="button" aria-label="Nota 4">4</button>
+      <button type="button" aria-label="Nota 5">5</button>
+      <button type="button" aria-label="Nota 6">6</button>
+      <button type="button" aria-label="Nota 7">7</button>
+      <button type="button" aria-label="Nota 8">8</button>
+      <button type="button" aria-label="Nota 9">9</button>
+      <button type="button" aria-label="Nota 10">10</button>
+    </div>
+  </div>
+
+  <div class="question">
+    <label for="q4">4. De 0 a 10 o quanto você nos indicaria a um amigo, familiar ou parceiro de negócios?</label>
+    <div class="rating" role="radiogroup" aria-labelledby="q4">
+      <button type="button" aria-label="Nota 0">0</button>
+      <button type="button" aria-label="Nota 1">1</button>
+      <button type="button" aria-label="Nota 2">2</button>
+      <button type="button" aria-label="Nota 3">3</button>
+      <button type="button" aria-label="Nota 4">4</button>
+      <button type="button" aria-label="Nota 5">5</button>
+      <button type="button" aria-label="Nota 6">6</button>
+      <button type="button" aria-label="Nota 7">7</button>
+      <button type="button" aria-label="Nota 8">8</button>
+      <button type="button" aria-label="Nota 9">9</button>
+      <button type="button" aria-label="Nota 10">10</button>
+    </div>
+  </div>
+
+  <div class="question">
+    <label for="feedback">5. Quais suas sugestões de melhorias, elogios e feedbacks gerais?</label>
+    <textarea id="feedback" placeholder="Digite sua resposta aqui..."></textarea>
+  </div>
+</body>
+</html>
